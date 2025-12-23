@@ -1,7 +1,6 @@
 name: animated_quiz_chart_example
 description: Example app for animated_quiz_chart package
-publish_to: 'none'
-version: 1.0.0+1
+version: 1.0.0
 
 environment:
   sdk: ">=2.19.0 <4.0.0"
