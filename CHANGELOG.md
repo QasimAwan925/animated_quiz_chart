@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.0 - 2024-XX-XX
+## 1.0.1
 
 ### Added
 - Initial release of animated_quiz_chart package
@@ -10,6 +10,3 @@
 
 ### Fixed
 - Initial release
-
-### Changed
-- None
