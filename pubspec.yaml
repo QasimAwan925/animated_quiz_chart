@@ -1,7 +1,8 @@
 name: animated_quiz_chart
 description: A beautiful animated quiz result chart package for Flutter with customizable progress indicators.
-version: 1.0.1
-homepage: https://github.com/QasimAwan925/animated_quiz_chart.git
+version: 1.0.2
+homepage: https://github.com/QasimAwan925/animated_quiz_chart
+repository: https://github.com/QasimAwan925/animated_quiz_chart.git
 
 environment:
   sdk: ">=2.17.0 <4.0.0"

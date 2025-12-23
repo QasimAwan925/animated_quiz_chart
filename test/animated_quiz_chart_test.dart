@@ -35,7 +35,7 @@ void main() {
   group('AnimatedQuizChart Widget Tests', () {
     testWidgets('AnimatedQuizChart renders correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+       const MaterialApp(
           home: Scaffold(
             body: AnimatedQuizChart(
               correctAnswersCount: 5,
@@ -54,7 +54,7 @@ void main() {
 
     testWidgets('AnimatedQuizChart with custom colors', (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(
             body: AnimatedQuizChart(
               correctAnswersCount: 8,
@@ -74,7 +74,7 @@ void main() {
 
     testWidgets('AnimatedQuizChart without percentage', (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(
             body: AnimatedQuizChart(
               correctAnswersCount: 3,
@@ -93,7 +93,7 @@ void main() {
 
     testWidgets('AnimatedQuizChart with zero questions', (WidgetTester tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(
             body: AnimatedQuizChart(
               correctAnswersCount: 0,
