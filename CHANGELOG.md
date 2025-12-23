@@ -1,3 +1,15 @@
-## 1.0.0
+# Changelog
 
-* TODO: Describe initial release.
+## 1.0.0 - 2024-XX-XX
+
+### Added
+- Initial release of animated_quiz_chart package
+- Support for animated quiz chart display
+- Includes circular progress and result page components
+- Provides custom animation configuration options
+
+### Fixed
+- Initial release
+
+### Changed
+- None
