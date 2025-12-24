@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.2
+## 1.0.3
 
 ### Fixed
 - Fixed static analysis issues reported by pub.dev

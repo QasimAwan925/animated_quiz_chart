@@ -55,9 +55,9 @@ class ChartAnimations {
   /// );
   /// ```
   static Animation<double> createCorrectAnimation(
-      AnimationController controller,
-      double percentageCorrect,
-      ) {
+    AnimationController controller,
+    double percentageCorrect,
+  ) {
     return Tween<double>(begin: 0, end: percentageCorrect).animate(
       CurvedAnimation(parent: controller, curve: Curves.easeInOut),
     );
@@ -91,9 +91,9 @@ class ChartAnimations {
   /// For a complete quiz visualization, the sum of [percentageCorrect]
   /// (from [createCorrectAnimation]) and [percentageWrong] should be 1.0.
   static Animation<double> createWrongAnimation(
-      AnimationController controller,
-      double percentageWrong,
-      ) {
+    AnimationController controller,
+    double percentageWrong,
+  ) {
     return Tween<double>(begin: 0, end: percentageWrong).animate(
       CurvedAnimation(parent: controller, curve: Curves.easeInOut),
     );

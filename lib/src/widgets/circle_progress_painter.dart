@@ -141,12 +141,12 @@ class CircleProgressPainter extends CustomPainter {
   }) {
     // Validate and normalize input values
     assert(percentageCorrect >= 0.0 && percentageCorrect <= 1.0,
-    'percentageCorrect must be between 0.0 and 1.0, got $percentageCorrect');
+        'percentageCorrect must be between 0.0 and 1.0, got $percentageCorrect');
     assert(percentageWrong >= 0.0 && percentageWrong <= 1.0,
-    'percentageWrong must be between 0.0 and 1.0, got $percentageWrong');
+        'percentageWrong must be between 0.0 and 1.0, got $percentageWrong');
     assert(strokeWidth > 0, 'strokeWidth must be positive, got $strokeWidth');
     assert(backgroundStrokeWidth > 0,
-    'backgroundStrokeWidth must be positive, got $backgroundStrokeWidth');
+        'backgroundStrokeWidth must be positive, got $backgroundStrokeWidth');
   }
 
   /// Paints the circular progress chart on the canvas.
@@ -308,22 +308,23 @@ class CircleProgressPainter extends CustomPainter {
       wrongColor: wrongColor ?? this.wrongColor,
       backgroundColor: backgroundColor ?? this.backgroundColor,
       strokeWidth: strokeWidth ?? this.strokeWidth,
-      backgroundStrokeWidth: backgroundStrokeWidth ?? this.backgroundStrokeWidth,
+      backgroundStrokeWidth:
+          backgroundStrokeWidth ?? this.backgroundStrokeWidth,
     );
   }
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is CircleProgressPainter &&
-              runtimeType == other.runtimeType &&
-              percentageCorrect == other.percentageCorrect &&
-              percentageWrong == other.percentageWrong &&
-              correctColor == other.correctColor &&
-              wrongColor == other.wrongColor &&
-              backgroundColor == other.backgroundColor &&
-              strokeWidth == other.strokeWidth &&
-              backgroundStrokeWidth == other.backgroundStrokeWidth;
+      other is CircleProgressPainter &&
+          runtimeType == other.runtimeType &&
+          percentageCorrect == other.percentageCorrect &&
+          percentageWrong == other.percentageWrong &&
+          correctColor == other.correctColor &&
+          wrongColor == other.wrongColor &&
+          backgroundColor == other.backgroundColor &&
+          strokeWidth == other.strokeWidth &&
+          backgroundStrokeWidth == other.backgroundStrokeWidth;
 
   @override
   int get hashCode =>

@@ -96,10 +96,12 @@ class QuizResult {
   }) {
     // Input validation
     if (totalQuestions <= 0) {
-      throw ArgumentError('totalQuestions must be positive, got $totalQuestions');
+      throw ArgumentError(
+          'totalQuestions must be positive, got $totalQuestions');
     }
     if (correctAnswersCount < 0) {
-      throw ArgumentError('correctAnswersCount cannot be negative, got $correctAnswersCount');
+      throw ArgumentError(
+          'correctAnswersCount cannot be negative, got $correctAnswersCount');
     }
     if (correctAnswersCount > totalQuestions) {
       throw ArgumentError(
@@ -107,7 +109,8 @@ class QuizResult {
       );
     }
     if (durationInSeconds < 0) {
-      throw ArgumentError('durationInSeconds cannot be negative, got $durationInSeconds');
+      throw ArgumentError(
+          'durationInSeconds cannot be negative, got $durationInSeconds');
     }
   }
 
@@ -126,9 +129,8 @@ class QuizResult {
   /// );
   /// print(result.percentageCorrect); // 0.75
   /// ```
-  double get percentageCorrect => totalQuestions > 0
-      ? correctAnswersCount / totalQuestions
-      : 0;
+  double get percentageCorrect =>
+      totalQuestions > 0 ? correctAnswersCount / totalQuestions : 0;
 
   /// The percentage of incorrect answers, expressed as a decimal between 0.0 and 1.0.
   ///

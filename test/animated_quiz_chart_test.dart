@@ -33,9 +33,10 @@ void main() {
   });
 
   group('AnimatedQuizChart Widget Tests', () {
-    testWidgets('AnimatedQuizChart renders correctly', (WidgetTester tester) async {
+    testWidgets('AnimatedQuizChart renders correctly',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
-       const MaterialApp(
+        const MaterialApp(
           home: Scaffold(
             body: AnimatedQuizChart(
               correctAnswersCount: 5,
@@ -45,14 +46,16 @@ void main() {
         ),
       );
 
-      await tester.pumpAndSettle(const Duration(seconds: 4)); // Wait for animation
+      await tester
+          .pumpAndSettle(const Duration(seconds: 4)); // Wait for animation
 
       expect(find.byType(AnimatedQuizChart), findsOneWidget);
       // The chart shows percentage in the center - check for "50%"
       expect(find.text('50%'), findsOneWidget);
     });
 
-    testWidgets('AnimatedQuizChart with custom colors', (WidgetTester tester) async {
+    testWidgets('AnimatedQuizChart with custom colors',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
@@ -66,13 +69,15 @@ void main() {
         ),
       );
 
-      await tester.pumpAndSettle(const Duration(seconds: 4)); // Wait for animation
+      await tester
+          .pumpAndSettle(const Duration(seconds: 4)); // Wait for animation
 
       expect(find.byType(AnimatedQuizChart), findsOneWidget);
       expect(find.text('80%'), findsOneWidget);
     });
 
-    testWidgets('AnimatedQuizChart without percentage', (WidgetTester tester) async {
+    testWidgets('AnimatedQuizChart without percentage',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
@@ -91,7 +96,8 @@ void main() {
       expect(find.text('30%'), findsNothing);
     });
 
-    testWidgets('AnimatedQuizChart with zero questions', (WidgetTester tester) async {
+    testWidgets('AnimatedQuizChart with zero questions',
+        (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
@@ -214,7 +220,8 @@ void main() {
 
       // Navigate to result page
       await tester.tap(find.text('Show Results'));
-      await tester.pumpAndSettle(const Duration(seconds: 5)); // Wait for animation
+      await tester
+          .pumpAndSettle(const Duration(seconds: 5)); // Wait for animation
 
       // Verify result page
       expect(find.text('75%'), findsOneWidget); // 9/12 = 75%

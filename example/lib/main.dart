@@ -160,7 +160,8 @@ class _SimpleDemoPageState extends State<SimpleDemoPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text('Percentage:'),
-                        Text('${((correctAnswers / totalQuestions) * 100).toStringAsFixed(1)}%'),
+                        Text(
+                            '${((correctAnswers / totalQuestions) * 100).toStringAsFixed(1)}%'),
                       ],
                     ),
                     Row(
