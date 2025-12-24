@@ -3,11 +3,11 @@
 ## 1.0.3
 
 ### Fixed
-- Fixed static analysis issues reported by pub.dev
-- Fixed deprecated `withOpacity` usage by replacing with `withAlpha`
-- Made state class public to resolve library_private_types_in_public_api warning
-- Updated documentation examples to match actual API
+- Fixed QuizResult validation to allow totalQuestions = 0
+- Fixed percentage calculation for edge cases
+- Updated test cases to match new QuizResult constructor
+- Added missing `publish_to: none` in example pubspec
 
-### Documentation
-- Improved API documentation with better examples
-- Added comprehensive dartdoc comments to all public API elements
+### Changed
+- Improved error messages in QuizResult constructor
+- Enhanced test coverage with more edge cases

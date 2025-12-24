@@ -18,17 +18,53 @@ void main() {
       expect(result.incorrectAnswersCount, 3);
     });
 
-    test('QuizResult with zero questions', () {
+    test('QuizResult with zero totalQuestions', () {
       final result = QuizResult(
         correctAnswersCount: 0,
         totalQuestions: 0,
         durationInSeconds: 0,
-        subjectName: 'Empty',
+        subjectName: 'Empty Quiz',
       );
 
-      expect(result.percentageCorrect, 0);
-      expect(result.percentageWrong, 1);
+      // With totalQuestions = 0, percentage should be 0
+      expect(result.percentageCorrect, 0.0);
+      expect(result.percentageWrong, 1.0);
       expect(result.incorrectAnswersCount, 0);
+    });
+
+    test('QuizResult with all correct answers', () {
+      final result = QuizResult(
+        correctAnswersCount: 10,
+        totalQuestions: 10,
+        durationInSeconds: 60,
+        subjectName: 'Perfect Score',
+      );
+
+      expect(result.percentageCorrect, 1.0);
+      expect(result.percentageWrong, 0.0);
+      expect(result.incorrectAnswersCount, 0);
+    });
+
+    test('QuizResult throws error for negative totalQuestions', () {
+      expect(
+          () => QuizResult(
+                correctAnswersCount: 0,
+                totalQuestions: -1, // Negative should throw error
+                durationInSeconds: 0,
+                subjectName: 'Invalid',
+              ),
+          throwsA(isA<ArgumentError>()));
+    });
+
+    test('QuizResult throws error when correct > total', () {
+      expect(
+          () => QuizResult(
+                correctAnswersCount: 11,
+                totalQuestions: 10, // Correct > Total should throw error
+                durationInSeconds: 60,
+                subjectName: 'Invalid',
+              ),
+          throwsA(isA<ArgumentError>()));
     });
   });
 
@@ -96,7 +132,7 @@ void main() {
       expect(find.text('30%'), findsNothing);
     });
 
-    testWidgets('AnimatedQuizChart with zero questions',
+    testWidgets('AnimatedQuizChart with zero total questions',
         (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
@@ -179,6 +215,38 @@ void main() {
 
       expect(find.text('Custom Header: Custom Test'), findsOneWidget);
       expect(find.byType(AnimatedQuizChart), findsOneWidget);
+    });
+
+    testWidgets('ResultPage shows correct statistics',
+        (WidgetTester tester) async {
+      final quizResult = QuizResult(
+        correctAnswersCount: 3,
+        totalQuestions: 5,
+        durationInSeconds: 45,
+        subjectName: 'Math Quiz',
+      );
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: ResultPage(
+            quizResult: quizResult,
+            onViewAnswers: () {},
+          ),
+        ),
+      );
+
+      await tester.pumpAndSettle();
+
+      // Check all statistics are displayed correctly
+      expect(find.text('Total Questions'), findsOneWidget);
+      expect(find.text('5'), findsOneWidget);
+      expect(find.text('Correct'), findsNWidgets(2)); // Legend and stats
+      expect(find.text('3'), findsOneWidget);
+      expect(
+          find.text('Incorrect'),
+          findsNWidgets(
+              2)); // Fixed: Changed from findsOneWidget to findsNWidgets(2)
+      expect(find.text('2'), findsOneWidget); // 5-3 = 2 incorrect
     });
   });
 

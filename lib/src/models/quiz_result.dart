@@ -36,10 +36,11 @@ class QuizResult {
 
   /// The total number of questions in the quiz.
   ///
-  /// Must be a positive integer greater than 0.
+  /// Must be a non-negative integer.
   /// Used to calculate percentages and validate [correctAnswersCount].
   ///
   /// Example: A quiz with 10 questions would have this value as 10.
+  /// Note: Can be 0 for empty quizzes.
   final int totalQuestions;
 
   /// The time taken to complete the quiz, in seconds.
@@ -66,12 +67,12 @@ class QuizResult {
   ///
   /// ## Parameters
   /// - [correctAnswersCount]: Number of correct answers (0 to [totalQuestions])
-  /// - [totalQuestions]: Total number of questions (must be > 0)
+  /// - [totalQuestions]: Total number of questions (must be >= 0)
   /// - [durationInSeconds]: Completion time in seconds (must be >= 0)
   /// - [subjectName]: Name of the quiz subject
   ///
   /// ## Throws
-  /// - [ArgumentError] if [totalQuestions] is not positive
+  /// - [ArgumentError] if [totalQuestions] is negative
   /// - [ArgumentError] if [correctAnswersCount] is negative or exceeds [totalQuestions]
   /// - [ArgumentError] if [durationInSeconds] is negative
   ///
@@ -95,9 +96,10 @@ class QuizResult {
     required this.subjectName,
   }) {
     // Input validation
-    if (totalQuestions <= 0) {
+    if (totalQuestions < 0) {
+      // Changed from <= 0 to < 0 to allow zero
       throw ArgumentError(
-          'totalQuestions must be positive, got $totalQuestions');
+          'totalQuestions must be non-negative, got $totalQuestions');
     }
     if (correctAnswersCount < 0) {
       throw ArgumentError(
@@ -117,7 +119,7 @@ class QuizResult {
   /// The percentage of correct answers, expressed as a decimal between 0.0 and 1.0.
   ///
   /// Calculated as [correctAnswersCount] ÷ [totalQuestions].
-  /// Returns 0.0 if [totalQuestions] is 0 (though constructor prevents this).
+  /// Returns 0.0 if [totalQuestions] is 0.
   ///
   /// ## Example
   /// ```dart
@@ -130,7 +132,7 @@ class QuizResult {
   /// print(result.percentageCorrect); // 0.75
   /// ```
   double get percentageCorrect =>
-      totalQuestions > 0 ? correctAnswersCount / totalQuestions : 0;
+      totalQuestions > 0 ? correctAnswersCount / totalQuestions : 0.0;
 
   /// The percentage of incorrect answers, expressed as a decimal between 0.0 and 1.0.
   ///
